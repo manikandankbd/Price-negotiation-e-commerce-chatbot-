@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - AI Shopping Assistant</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<header class="bg-dark text-white text-center py-3 mt-5">
+        <p></p>
+    </header>
+<body>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/products">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/chatbot">Chatbot</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/checkout">Checkout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h2 class="text-center">Our Products</h2>
+        <div class="row">
+            <!-- Product 1 -->
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{ url_for('static', filename='images/airpods.png') }}" class="card-img-top" alt="AirPods">
+                    <div class="card-body">
+                        <h5 class="card-title">Apple AirPods</h5>
+                        <p class="card-text">₹4,999</p>
+                        <button class="btn btn-primary add-to-cart" data-name="Apple AirPods" data-price="4999">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{ url_for('static', filename='images/bluetooth.webp') }}" class="card-img-top" alt="Bluetooth">
+                    <div class="card-body">
+                        <h5 class="card-title">Wireless Bluetooth Speaker</h5>
+                        <p class="card-text">₹2,999</p>
+                        <button class="btn btn-primary add-to-cart" data-name="Wireless Bluetooth Speaker" data-price="2999">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{ url_for('static', filename='images/iphone16.webp') }}" class="card-img-top" alt="iPhone 16">
+                    <div class="card-body">
+                        <h5 class="card-title">iPhone 16</h5>
+                        <p class="card-text">₹1,09,999</p>
+                        <button class="btn btn-primary add-to-cart" data-name="iPhone 16" data-price="109999">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{ url_for('static', filename='images/macbook.jpg') }}" class="card-img-top" alt="MacBook">
+                    <div class="card-body">
+                        <h5 class="card-title">Apple MacBook Pro</h5>
+                        <p class="card-text">₹1,59,999</p>
+                        <button class="btn btn-primary add-to-cart" data-name="Apple MacBook Pro" data-price="159999">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{ url_for('static', filename='images/nothing1.webp') }}" class="card-img-top" alt="Nothing Phone">
+                    <div class="card-body">
+                        <h5 class="card-title">Nothing Phone (2)</h5>
+                        <p class="card-text">₹39,999</p>
+                        <button class="btn btn-primary add-to-cart" data-name="Nothing Phone (2)" data-price="39999">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{ url_for('static', filename='images/smartwatch.webp') }}" class="card-img-top" alt="Smartwatch">
+                    <div class="card-body">
+                        <h5 class="card-title">Smartwatch</h5>
+                        <p class="card-text">₹5,499</p>
+                        <button class="btn btn-primary add-to-cart" data-name="Smartwatch" data-price="5499">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let cart = JSON.parse(sessionStorage.getItem("cart")) || [];
+
+            document.querySelectorAll(".add-to-cart").forEach(button => {
+                button.addEventListener("click", function () {
+                    let name = this.getAttribute("data-name");
+                    let price = this.getAttribute("data-price");
+
+                    cart.push({ name, price });
+                    alert(name + " added to cart!");
+
+                    sessionStorage.setItem("cart", JSON.stringify(cart));
+                });
+            });
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

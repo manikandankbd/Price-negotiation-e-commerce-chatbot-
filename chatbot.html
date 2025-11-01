@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Shopping Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        /* Background Gradient */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Chat Container */
+        .chat-container {
+            width: 400px;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Chat Box */
+        #chat-box {
+            height: 350px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background: #f9f9f9;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Message Containers */
+        .message {
+            display: flex;
+            align-items: center;
+            margin: 5px 0;
+        }
+
+        .user-message {
+            justify-content: flex-end;
+        }
+
+        .bot-message {
+            justify-content: flex-start;
+        }
+
+        /* Chat Bubble Styling */
+        .bubble {
+            max-width: 70%;
+            padding: 10px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .user-message .bubble {
+            background: #007BFF;
+            color: white;
+            text-align: right;
+        }
+
+        .bot-message .bubble {
+            background: #34c759;
+            color: white;
+            text-align: left;
+        }
+
+        /* Input & Button */
+        .input-container {
+            display: flex;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            outline: none;
+            transition: all 0.3s ease-in-out;
+        }
+
+        input[type="text"]:focus {
+            border-color: #007bff;
+            box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.5);
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-left: 5px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(5px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="chat-container">
+        <h2 style="text-align: center; color: #333;">AI Shopping Assistant</h2>
+        <div id="chat-box">
+            <div class="message bot-message">
+                <span class="bubble"><strong>Bot:</strong> Hello! How can I assist you today?</span>
+            </div>
+        </div>
+        <div class="input-container">
+            <input type="text" id="user-input" placeholder="Type a message..." onkeypress="handleKeyPress(event)">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        function sendMessage() {
+            var userMessage = $("#user-input").val();
+            if (userMessage.trim() === "") return;
+
+            // Append user message (right aligned)
+            $("#chat-box").append('<div class="message user-message"><span class="bubble"><strong>You:</strong> ' + userMessage + '</span></div>');
+
+            // AJAX request to the backend
+            $.ajax({
+                type: "POST",
+                url: "/get_response",
+                contentType: "application/json",
+                data: JSON.stringify({ "message": userMessage }),
+                success: function(response) {
+                    // Append bot message (left aligned)
+                    $("#chat-box").append('<div class="message bot-message"><span class="bubble"><strong>Bot:</strong> ' + response.reply + '</span></div>');
+                    $("#chat-box").scrollTop($("#chat-box")[0].scrollHeight);
+                }
+            });
+
+            $("#user-input").val("");  // Clear input box
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === "Enter") {
+                sendMessage();
+            }
+        }
+    </script>
+
+</body>
+</html>

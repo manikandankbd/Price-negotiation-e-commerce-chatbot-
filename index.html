@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopTrendz</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<header class="bg-dark text-white text-center py-3 mt-5">
+        <p></p>
+    </header>
+
+<body>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/products">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/chatbot">Chatbot</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/checkout">Checkout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Heading -->
+    <header class="bg-primary text-white text-center py-5">
+        <div class="container">
+            <h1 class="display-3 fw-bold">Welcome to ShopTrendz</h1>
+            <p class="lead">Negotiate prices, shop smarter, and get the best deals with our AI-powered chatbot!</p>
+            <a href="/products" class="btn btn-light btn-lg">Start Shopping</a>
+        </div>
+    </header>
+
+    <!-- Featured Products -->
+    <section class="container mt-5">
+        <h2 class="text-center mb-4">Featured Products</h2>
+        <div class="row">
+            <!-- Product 1 -->
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{ url_for('static', filename='images/iphone16.webp') }}" class="card-img-top" alt="iPhone 16">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">iPhone 16</h5>
+                        <p class="card-text">₹1,09,999</p>
+                        <a href="/products" class="btn btn-primary">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{ url_for('static', filename='images/macbook.jpg') }}" class="card-img-top" alt="MacBook Pro">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">MacBook Pro</h5>
+                        <p class="card-text">₹1,59,999</p>
+                        <a href="/products" class="btn btn-primary">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{ url_for('static', filename='images/smartwatch.webp') }}" class="card-img-top" alt="Smartwatch">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Smartwatch</h5>
+                        <p class="card-text">₹5,499</p>
+                        <a href="/products" class="btn btn-primary">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chatbot Section -->
+    <section class="bg-light text-center py-5 mt-5">
+        <div class="container">
+            <h2 class="display-4">Want to Negotiate?</h2>
+            <p class="lead">Use our AI-powered chatbot to get the best deals on your favorite products!</p>
+            <a href="/chatbot" class="btn btn-dark btn-lg">Try Chatbot</a>
+        </div>
+    </section>
+
+    <!-- Checkout Section -->
+    <section class="text-center py-5 mt-5">
+        <div class="container">
+            <h2 class="display-4">Ready to Buy?</h2>
+            <p class="lead">Proceed to checkout and finalize your purchase.</p>
+            <a href="/checkout" class="btn btn-success btn-lg">Go to Checkout</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <p>&copy; 2025 AI Shopping Assistant. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

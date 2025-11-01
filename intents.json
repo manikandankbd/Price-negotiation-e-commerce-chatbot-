@@ -1,0 +1,77 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": ["Hello", "Hi", "Hey", "Good morning", "Good evening"],
+      "responses": ["Hello! How can I assist you?", "Hi there! How can I help?", "Hey! What do you need help with?"]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": ["Bye", "Goodbye", "See you later"],
+      "responses": ["Goodbye! Have a great day!", "See you next time!", "Take care!"]
+    },
+    {
+      "tag": "thanks",
+      "patterns": ["Thanks", "Thank you", "Appreciate it"],
+      "responses": ["You're welcome!", "Happy to help!", "Anytime!"]
+    },
+    {
+      "tag": "product_inquiry",
+      "patterns": ["Tell me about this product", "What are the features?", "Can you describe this item?"],
+      "responses": ["This product is high-quality and comes with great features. What else would you like to know?", "It has excellent customer reviews and great durability. Want to know more?"]
+    },
+    {
+      "tag": "price_inquiry",
+      "patterns": ["How much is this?", "What is the price?", "Is there a discount?"],
+      "responses": ["The price is ₹5000. Would you like to negotiate?", "It costs ₹5000. Let me know if you’re looking for a discount!"]
+    },
+    {
+      "tag": "price_inquiry",
+      "patterns": ["How much is this?", "What is the price?", "Is there a discount?"],
+      "responses": ["The price is Rs5000. Would you like to negotiate?", "It costs ₹5000. Let me know if you’re looking for a discount!"]
+    },
+    {
+      "tag": "negotiation_start",
+      "patterns": ["negotiate", "Is this price final?", "Can I get a discount?"],
+      "responses": ["Sure! What price do you have in mind?", "I'm open to negotiation. What is your offer?"]
+    },
+    {
+      "tag": "negotiation_counter",
+      "patterns": ["I want it for Rs4000", "Can you do Rs4500?", "s"],
+      "responses": [
+        "I can offer it for Rs500. Would that work?",
+        "How about ₹4700? It's a great deal!",
+        "I can lower the price to ₹4800. Does that sound good?"
+      ]
+    },
+    {
+      "tag": "negotiation_accept",
+      "patterns": ["Okay, Rs4500 works", "Deal at Rs4700", "Alright, I'll take it","no reduce some more"],
+      "responses": ["i can reduce Rs 100.Beyond that i can't offer you"]
+    },
+    {
+      "tag": "negotiation_accept1",
+      "patterns": ["Okay i can take", "Deal at Rs4700", "Alright, I'll take it"],
+      "responses": ["Great! Let's proceed to checkout.", "Awesome! You got a great deal. Ready to buy?"]
+    },
+  {
+  "tag": "negotiation_accept2",
+  "patterns": ["Okay i can take", "Deal at Rs4700", "Alright, I'll take it", "yes"],
+  "responses": [
+    "Great! Click here to proceed to the <a href='http://127.0.0.1:5000/checkout' target='_blank'>Checkout</a> page."
+  ]
+},
+
+    {
+      "tag": "negotiation_reject",
+      "patterns": ["Too expensive", "I can't afford that", "That's too high"],
+      "responses": ["I understand. Let me know what works for you.", "Sorry, that's the best I can do for now."]
+    },
+
+    {
+      "tag": "confirm_purchase",
+      "patterns": ["I want to buy this", "I'll take it", "Proceed with the order"],
+      "responses": ["Great choice! Redirecting you to checkout.", "Thank you for your purchase! Redirecting to payment..."]
+    }
+  ]
+}
